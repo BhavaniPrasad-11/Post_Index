@@ -1,0 +1,96 @@
+===============================================================================
+MALAYALAM POSITIONAL INVERTED INDEX — EXECUTION & EVALUATION INSTRUCTIONS
+Student Roll Number: S20240010254
+Course: Information Retrieval
+===============================================================================
+
+1. OVERVIEW
+This package contains the complete, working Malayalam Positional Inverted Index
+constructed from official Malayalam Wikipedia article dumps.
+
+The architecture strictly adheres to the course requirements:
+- Vocabulary (lexicon) is loaded and maintained in Main Memory (RAM) for O(1) lookups.
+- Positional postings lists are stored persistently on Secondary Storage (SQLite B-tree).
+- Query operations fetch postings on-demand from disk.
+- Token positions are 1-based sequential integers in the cleaned document text.
+- Positional intersection supports multi-word exact phrase search.
+
+===============================================================================
+2. DIRECTORY STRUCTURE
+===============================================================================
+S20240010254-IR-Submission/
+├── README.md                      Detailed technical documentation
+├── S20240010254-src.zip           Reproducible source code archive
+├── index/                         Generated persistent index artifacts
+│   ├── dictionary.json            In-memory vocabulary serialized to disk (449k terms)
+│   └── postings.sqlite3           Persistent SQLite postings database (1.59M rows)
+├── output/                        Required evaluation reports
+│   ├── collection_statistics.txt  Collection metrics and processing stats
+│   ├── rare_terms.txt             Ten verified rare terms (DF=1) with positions
+│   ├── test_results.txt           Automated test execution results (5/5 passed)
+│   ├── query_examples.txt         Ten verified demonstration queries
+│   ├── sample_positional_index.txt Sample Term -> [(DocID, [Positions])] entries
+│   └── index_validation.txt       Comprehensive 12-rule integrity validation
+└── documentation/
+    └── execution_instructions.txt This execution guide
+
+===============================================================================
+3. PREREQUISITES & ENVIRONMENT SETUP
+===============================================================================
+- Python 3.10 or higher (Python 3.10+ recommended)
+- Standard library modules used: sqlite3, json, bz2, xml.etree, unicodedata, re, unittest
+- Optional external libraries: requests, tqdm (installed via requirements.txt)
+
+Quick Setup:
+  python -m venv venv
+  # Activate virtualenv:
+  # On Windows:  venv\Scripts\activate
+  # On Linux:    source venv/bin/activate
+  pip install -r requirements.txt
+
+===============================================================================
+4. STEP-BY-STEP EXECUTION COMMANDS
+===============================================================================
+
+A. VIEW COLLECTION STATISTICS:
+  python main.py stats
+
+B. SEARCH A SINGLE MALAYALAM TERM (Displays CF, DF, and positional postings):
+  python main.py search-term "കേരളം" --limit 5
+  python main.py search-term "മലയാളം" --limit 5
+  python main.py search-term "ഇന്ത്യ" --limit 5
+
+C. EXACT PHRASE SEARCH VIA POSITIONAL INTERSECTION:
+  python main.py search-phrase "കേരള സാഹിത്യ അക്കാദമി" --limit 5
+  python main.py search-phrase "ഇന്ത്യൻ സംസ്ഥാനമായ" --limit 5
+  python main.py search-phrase "പ്രധാന നഗരം" --limit 5
+
+D. DISPLAY RARE MALAYALAM TERMS (DF = 1):
+  python main.py rare-terms --limit 10
+
+E. RUN THE AUTOMATED UNIT TEST SUITE (5 Test Cases):
+  python main.py test
+  # or directly:
+  python tests/test_indexer.py -v
+
+F. RUN COMPREHENSIVE 12-RULE INTEGRITY VALIDATION:
+  python scripts/validate_index.py
+
+G. LAUNCH INTERACTIVE CONSOLE MENU:
+  python main.py interactive
+
+H. REBUILD THE INDEX FROM SCRATCH (Optional):
+  # Download dataset dump if needed:
+  python src/dataset_downloader.py
+  # Build index for 5,000 articles:
+  python scripts/build_index.py --max-docs 5000
+  # Generate all output reports:
+  python scripts/generate_reports.py
+
+===============================================================================
+5. CONTACT & VERIFICATION
+===============================================================================
+Student Roll Number: S20240010254
+All artifacts, outputs, and database rows have been physically generated and
+verified against live execution on the actual Malayalam Wikipedia dataset.
+===============================================================================

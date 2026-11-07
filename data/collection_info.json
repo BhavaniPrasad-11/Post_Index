@@ -1,0 +1,11 @@
+{
+  "source_url": "https://dumps.wikimedia.org/mlwiki/latest/mlwiki-latest-pages-articles.xml.bz2",
+  "filename": "mlwiki-latest-pages-articles.xml.bz2",
+  "local_path": "data/mlwiki-latest-pages-articles.xml.bz2",
+  "file_size_bytes": 203925193,
+  "file_size_mb": 194.48,
+  "expected_size_bytes": 203925193,
+  "recorded_timestamp_utc": "2026-11-07T13:19:50.826469+00:00",
+  "status": "ready",
+  "already_existed": false
+}

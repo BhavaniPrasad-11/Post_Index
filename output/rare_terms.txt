@@ -1,0 +1,109 @@
+===========================================================================
+ MALAYALAM POSITIONAL INVERTED INDEX — TEN RARE MALAYALAM TERMS REPORT
+===========================================================================
+ Selection Criterion: Document Frequency (DF) = 1 (Terms occurring in exactly 1 document)
+ Diversity: Selected from TEN DISTINCT Malayalam Wikipedia articles across the collection.
+ Storage Architecture: Postings retrieved from secondary storage (SQLite).
+===========================================================================
+
+--- RARE TERM #1 ---
+TERM: സമൂഹ്യതിന്മകൾക്കെതിരെയും
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 2
+Document Title: ശ്രീനാരായണഗുരു
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%B6%E0%B5%8D%E0%B4%B0%E0%B5%80%E0%B4%A8%E0%B4%BE%E0%B4%B0%E0%B4%BE%E0%B4%AF%E0%B4%A3%E0%B4%97%E0%B5%81%E0%B4%B0%E0%B5%81
+Positions: [23]
+
+--- RARE TERM #2 ---
+TERM: അക്ഷരമാലയെ
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 3
+Document Title: മലയാളം അക്ഷരമാല
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%AE%E0%B4%B2%E0%B4%AF%E0%B4%BE%E0%B4%B3%E0%B4%82_%E0%B4%85%E0%B4%95%E0%B5%8D%E0%B4%B7%E0%B4%B0%E0%B4%AE%E0%B4%BE%E0%B4%B2
+Positions: [10]
+
+--- RARE TERM #3 ---
+TERM: ആണ്ടവൻറെ
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 4
+Document Title: മലയാളം
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%AE%E0%B4%B2%E0%B4%AF%E0%B4%BE%E0%B4%B3%E0%B4%82
+Positions: [1]
+
+--- RARE TERM #4 ---
+TERM: ഉൽസവങ്ങളിൽ
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 5
+Document Title: ഓണം
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%93%E0%B4%A3%E0%B4%82
+Positions: [6]
+
+--- RARE TERM #5 ---
+TERM: പെറ്റോസ്കിയി
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 6
+Document Title: ക്ലോഡ് ഷാനൺ
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%95%E0%B5%8D%E0%B4%B2%E0%B5%8B%E0%B4%A1%E0%B5%8D_%E0%B4%B7%E0%B4%BE%E0%B4%A8%E0%B5%BA
+Positions: [35]
+
+--- RARE TERM #6 ---
+TERM: എഴുത്തുകാരിലൊരാളെന്നും
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 7
+Document Title: വൈക്കം മുഹമ്മദ് ബഷീർ
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%B5%E0%B5%88%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B4%82_%E0%B4%AE%E0%B5%81%E0%B4%B9%E0%B4%AE%E0%B5%8D%E0%B4%AE%E0%B4%A6%E0%B5%8D_%E0%B4%AC%E0%B4%B7%E0%B5%80%E0%B5%BC
+Positions: [27]
+
+--- RARE TERM #7 ---
+TERM: എഴുത്തുകലകളെ
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 8
+Document Title: സാഹിത്യം
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%B8%E0%B4%BE%E0%B4%B9%E0%B4%BF%E0%B4%A4%E0%B5%8D%E0%B4%AF%E0%B4%82
+Positions: [6]
+
+--- RARE TERM #8 ---
+TERM: പദ്യകൃതികളാലും
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 9
+Document Title: മലയാളസാഹിത്യം
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%AE%E0%B4%B2%E0%B4%AF%E0%B4%BE%E0%B4%B3%E0%B4%B8%E0%B4%BE%E0%B4%B9%E0%B4%BF%E0%B4%A4%E0%B5%8D%E0%B4%AF%E0%B4%82
+Positions: [6]
+
+--- RARE TERM #9 ---
+TERM: ഉപയോക്താവിനും
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 10
+Document Title: വിക്കി
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%B5%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B4%BF
+Positions: [2]
+
+--- RARE TERM #10 ---
+TERM: പ്രവാചകൻമാരേ
+CF: 1
+DF: 1
+Positional Postings:
+DocID: 11
+Document Title: വയലാർ രാമവർമ്മ
+Wikipedia URL: https://ml.wikipedia.org/wiki/%E0%B4%B5%E0%B4%AF%E0%B4%B2%E0%B4%BE%E0%B5%BC_%E0%B4%B0%E0%B4%BE%E0%B4%AE%E0%B4%B5%E0%B5%BC%E0%B4%AE%E0%B5%8D%E0%B4%AE
+Positions: [42]
+
+===========================================================================

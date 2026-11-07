@@ -1,0 +1,183 @@
+===========================================================================
+ MALAYALAM POSITIONAL INVERTED INDEX — TEN DEMONSTRATION EXAMPLES
+===========================================================================
+ This report presents TEN actual query execution demonstrations on the real
+ Malayalam Wikipedia indexed corpus, verifying single-term search, repeated term
+ positions, multi-document distributions, exact phrase queries via positional
+ intersection, and rare terms retrieval.
+===========================================================================
+
+EXAMPLE #1
+Input query:        "കേരളം"
+Query category:     Single-Term Search (Common Geographical Term)
+Expected operation: Retrieve CF, DF, and positional occurrences of 'കേരളം' (Kerala) across articles.
+Actual output:
+  Collection Frequency (CF): 359
+  Document Frequency (DF):   197
+  Sample Postings (Top 3 Docs):
+    - DocID 4: "മലയാളം"
+      Positions (1 times): [242]
+    - DocID 5: "ഓണം"
+      Positions (4 times): [782, 807, 1162, 1274]
+    - DocID 11: "വയലാർ രാമവർമ്മ"
+      Positions (1 times): [47]
+Explanation:
+  The query 'കേരളം' was checked in the in-memory RAM vocabulary (O(1)), yielding CF=359 and DF=197. The complete positional postings list was retrieved on-demand from SQLite secondary storage, displaying exact 1-based token positions in sorted DocID order.
+---------------------------------------------------------------------------
+
+EXAMPLE #2
+Input query:        "മലയാളം"
+Query category:     Single-Term Search (Language Name)
+Expected operation: Retrieve all documents containing 'മലയാളം' (Malayalam) with token positions.
+Actual output:
+  Collection Frequency (CF): 910
+  Document Frequency (DF):   481
+  Sample Postings (Top 3 Docs):
+    - DocID 2: "ശ്രീനാരായണഗുരു"
+      Positions (1 times): [530]
+    - DocID 3: "മലയാളം അക്ഷരമാല"
+      Positions (24 times): [7, 9, 36, 54, 72, 94, 121, 137, 173, 206, 245, 250, 330, 341, 411, 538, 565, 575, 577, 593, 684, 694, 959, 989]
+    - DocID 4: "മലയാളം"
+      Positions (57 times): [55, 66, 98, 110, 136, 174, 176, 195, 236, 261, 273, 307, 313, 344, 362, 408, 442, 465, 477, 566, 679, 692, 747, 773, 836, 881, 910, 919, 925, 990, 992, 1030, 1194, 1226, 1318, 1333, 1383, 1409, 1565, 1871, 2088, 2156, 2164, 2314, 3061, 3408, 3810, 3875, 3887, 4012, 4014, 4053, 4176, 4291, 4331, 4335, 4340]
+Explanation:
+  The query 'മലയാളം' was checked in the in-memory RAM vocabulary (O(1)), yielding CF=910 and DF=481. The complete positional postings list was retrieved on-demand from SQLite secondary storage, displaying exact 1-based token positions in sorted DocID order.
+---------------------------------------------------------------------------
+
+EXAMPLE #3
+Input query:        "ഇന്ത്യ"
+Query category:     Single-Term Search (Country Name)
+Expected operation: Verify multi-document postings and ascending DocID order.
+Actual output:
+  Collection Frequency (CF): 998
+  Document Frequency (DF):   478
+  Sample Postings (Top 3 Docs):
+    - DocID 11: "വയലാർ രാമവർമ്മ"
+      Positions (1 times): [445]
+    - DocID 17: "കേരളം"
+      Positions (2 times): [1680, 4239]
+    - DocID 21: "മഹാത്മാ ഗാന്ധി"
+      Positions (8 times): [1508, 1827, 1861, 2810, 3126, 3236, 4672, 4793]
+Explanation:
+  The query 'ഇന്ത്യ' was checked in the in-memory RAM vocabulary (O(1)), yielding CF=998 and DF=478. The complete positional postings list was retrieved on-demand from SQLite secondary storage, displaying exact 1-based token positions in sorted DocID order.
+---------------------------------------------------------------------------
+
+EXAMPLE #4
+Input query:        "ചരിത്രം"
+Query category:     Single-Term Search (History/Context)
+Expected operation: Verify CF and DF for frequent encyclopedic noun 'ചരിത്രം' (History).
+Actual output:
+  Collection Frequency (CF): 1352
+  Document Frequency (DF):   1020
+  Sample Postings (Top 3 Docs):
+    - DocID 2: "ശ്രീനാരായണഗുരു"
+      Positions (1 times): [1539]
+    - DocID 4: "മലയാളം"
+      Positions (3 times): [377, 4252, 4263]
+    - DocID 5: "ഓണം"
+      Positions (1 times): [973]
+Explanation:
+  The query 'ചരിത്രം' was checked in the in-memory RAM vocabulary (O(1)), yielding CF=1352 and DF=1020. The complete positional postings list was retrieved on-demand from SQLite secondary storage, displaying exact 1-based token positions in sorted DocID order.
+---------------------------------------------------------------------------
+
+EXAMPLE #5
+Input query:        "സാഹിത്യം"
+Query category:     Single-Term Search (Literature)
+Expected operation: Retrieve postings for 'സാഹിത്യം' (Literature) showing exact token offsets.
+Actual output:
+  Collection Frequency (CF): 180
+  Document Frequency (DF):   124
+  Sample Postings (Top 3 Docs):
+    - DocID 4: "മലയാളം"
+      Positions (3 times): [1924, 2197, 2275]
+    - DocID 7: "വൈക്കം മുഹമ്മദ് ബഷീർ"
+      Positions (2 times): [265, 271]
+    - DocID 8: "സാഹിത്യം"
+      Positions (12 times): [1, 8, 24, 26, 50, 62, 156, 186, 276, 278, 290, 317]
+Explanation:
+  The query 'സാഹിത്യം' was checked in the in-memory RAM vocabulary (O(1)), yielding CF=180 and DF=124. The complete positional postings list was retrieved on-demand from SQLite secondary storage, displaying exact 1-based token positions in sorted DocID order.
+---------------------------------------------------------------------------
+
+EXAMPLE #6
+Input query:        "കേരള സാഹിത്യ അക്കാദമി"
+Query category:     3-Word Exact Phrase Search
+Expected operation: Positional intersection to find consecutive positions for 'കേരള സാഹിത്യ അക്കാദമി'.
+Actual output:
+  Query Type:           Exact Phrase Search (Positional Intersection)
+  Matching Documents:   121
+  Total Phrase Matches: 212
+  Sample Matches:
+    - DocID 7: "വൈക്കം മുഹമ്മദ് ബഷീർ"
+      Phrase Start Positions: [804]
+    - DocID 8: "സാഹിത്യം"
+      Phrase Start Positions: [297, 325]
+    - DocID 11: "വയലാർ രാമവർമ്മ"
+      Phrase Start Positions: [585]
+Explanation:
+  The search engine decomposed the phrase into tokens ['കേരള', 'സാഹിത്യ', 'അക്കാദമി']. It retrieved each token's positional postings from secondary storage, found common documents, and performed positional intersection to confirm that pos(token_{i+1}) == pos(token_i) + 1.
+---------------------------------------------------------------------------
+
+EXAMPLE #7
+Input query:        "ഇന്ത്യൻ സംസ്ഥാനമായ"
+Query category:     2-Word Exact Phrase Search
+Expected operation: Verify consecutive word matching: pos('സംസ്ഥാനമായ') == pos('ഇന്ത്യൻ') + 1.
+Actual output:
+  Query Type:           Exact Phrase Search (Positional Intersection)
+  Matching Documents:   12
+  Total Phrase Matches: 12
+  Sample Matches:
+    - DocID 109: "മലപ്പുറം ജില്ല"
+      Phrase Start Positions: [42]
+    - DocID 294: "ഡിസംബർ 25"
+      Phrase Start Positions: [98]
+    - DocID 329: "എറണാകുളം ജില്ല"
+      Phrase Start Positions: [2]
+Explanation:
+  The search engine decomposed the phrase into tokens ['ഇന്ത്യൻ', 'സംസ്ഥാനമായ']. It retrieved each token's positional postings from secondary storage, found common documents, and performed positional intersection to confirm that pos(token_{i+1}) == pos(token_i) + 1.
+---------------------------------------------------------------------------
+
+EXAMPLE #8
+Input query:        "പ്രധാന നഗരം"
+Query category:     2-Word Exact Phrase Search (Major City)
+Expected operation: Demonstrate phrase query identification across geographical articles.
+Actual output:
+  Query Type:           Exact Phrase Search (Positional Intersection)
+  Matching Documents:   2
+  Total Phrase Matches: 2
+  Sample Matches:
+    - DocID 1087: "കാഞ്ഞങ്ങാട്"
+      Phrase Start Positions: [4]
+    - DocID 1190: "കന്യാകുമാരി"
+      Phrase Start Positions: [37]
+Explanation:
+  The search engine decomposed the phrase into tokens ['പ്രധാന', 'നഗരം']. It retrieved each token's positional postings from secondary storage, found common documents, and performed positional intersection to confirm that pos(token_{i+1}) == pos(token_i) + 1.
+---------------------------------------------------------------------------
+
+EXAMPLE #9
+Input query:        "സമൂഹ്യതിന്മകൾക്കെതിരെയും"
+Query category:     Rare Term Search (Low Document Frequency, DF=1)
+Expected operation: Retrieve unique document containing the rare term 'സമൂഹ്യതിന്മകൾക്കെതിരെയും'.
+Actual output:
+  Collection Frequency (CF): 1
+  Document Frequency (DF):   1
+  Sample Postings (Top 3 Docs):
+    - DocID 2: "ശ്രീനാരായണഗുരു"
+      Positions (1 times): [23]
+Explanation:
+  The query 'സമൂഹ്യതിന്മകൾക്കെതിരെയും' was checked in the in-memory RAM vocabulary (O(1)), yielding CF=1 and DF=1. The complete positional postings list was retrieved on-demand from SQLite secondary storage, displaying exact 1-based token positions in sorted DocID order.
+---------------------------------------------------------------------------
+
+EXAMPLE #10
+Input query:        "അക്ഷരമാലയെ"
+Query category:     Rare Term Search (Low Document Frequency, DF=1)
+Expected operation: Retrieve unique document containing the rare term 'അക്ഷരമാലയെ'.
+Actual output:
+  Collection Frequency (CF): 1
+  Document Frequency (DF):   1
+  Sample Postings (Top 3 Docs):
+    - DocID 3: "മലയാളം അക്ഷരമാല"
+      Positions (1 times): [10]
+Explanation:
+  The query 'അക്ഷരമാലയെ' was checked in the in-memory RAM vocabulary (O(1)), yielding CF=1 and DF=1. The complete positional postings list was retrieved on-demand from SQLite secondary storage, displaying exact 1-based token positions in sorted DocID order.
+---------------------------------------------------------------------------
+
+===========================================================================

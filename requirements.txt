@@ -1,0 +1,5 @@
+# Malayalam Positional Inverted Index - Python Dependencies
+# The core index engine is fully self-contained using Python Standard Libraries.
+# The following external libraries enhance download progress bars and HTTP handling:
+requests>=2.28.0
+tqdm>=4.65.0

@@ -1,0 +1,27 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environments
+env/
+venv/
+ENV/
+
+# Large dataset raw dump (>100MB blocked by GitHub)
+data/*.xml.bz2
+data/*.xml
+*.bz2
+
+# Persistent index database and dictionary (hosted externally on Drive)
+index/
+
+# Large archives
+S20240010254-index-artifacts.zip
+YOUR_ROLL_NO-src.zip
+MALAYALAM-INDEXER-src.zip
+
+# OS generated files
+.DS_Store
+Thumbs.db

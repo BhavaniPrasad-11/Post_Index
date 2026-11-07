@@ -1,0 +1,20 @@
+======================================================================
+ MALAYALAM POSITIONAL INVERTED INDEX — COLLECTION STATISTICS REPORT
+======================================================================
+ Dataset Source:             Malayalam Wikipedia (mlwiki-latest)
+ Number of Indexed Articles: 5,000
+ Total Number of Tokens:     2,285,058
+ Total Unique Terms (RAM):   449,064
+ Total Postings on Disk:     1,590,645
+ Postings DB Size (Disk):    131.81 MB (138,215,424 bytes)
+ Vocabulary Size (RAM/JSON): 33.55 MB (35,174,599 bytes)
+ Average Document Length:    457.01 tokens/article
+ Average Postings per Term:  3.54 documents/term
+ Index Construction Time:    57.47 seconds
+======================================================================
+ ARCHITECTURAL SUMMARY:
+ - Vocabulary / Dictionary:  Loaded in Main Memory (RAM) for O(1) lookups.
+ - Positional Postings:      Persisted on Secondary Storage (SQLite B-tree).
+ - Token Positions:          1-based sequential indices in original cleaned text.
+ - Unicode Normalization:    Unicode NFC with full Malayalam character preservation.
+======================================================================

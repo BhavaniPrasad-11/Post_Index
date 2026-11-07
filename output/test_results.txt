@@ -1,0 +1,34 @@
+======================================================================
+ MALAYALAM POSITIONAL INVERTED INDEX — AUTOMATED TEST RESULTS
+======================================================================
+ Tests Executed: 5
+ Failures:       0
+ Errors:         0
+ Final Verdict:  ALL TESTS PASSED (SUCCESS)
+======================================================================
+
+DETAILED TEST CASE EXECUTION LOG:
+test_1_unicode_tokenization (tests.test_indexer.TestMalayalamPositionalIndexer.test_1_unicode_tokenization)
+Test 1: Malayalam Unicode tokenization. ... ok
+test_2_positional_indexing_of_repeated_terms (tests.test_indexer.TestMalayalamPositionalIndexer.test_2_positional_indexing_of_repeated_terms)
+Test 2: Correct positional indexing of repeated terms within a document. ... ok
+test_3_collection_and_document_frequency (tests.test_indexer.TestMalayalamPositionalIndexer.test_3_collection_and_document_frequency)
+Test 3: Correct Collection Frequency (CF) and Document Frequency (DF). ... ok
+test_4_disk_retrieval_of_positional_postings (tests.test_indexer.TestMalayalamPositionalIndexer.test_4_disk_retrieval_of_positional_postings)
+Test 4: Correct retrieval of positional postings from secondary storage. ... ok
+test_5_phrase_search_using_positional_information (tests.test_indexer.TestMalayalamPositionalIndexer.test_5_phrase_search_using_positional_information)
+Test 5: Correct phrase searching using positional information. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.087s
+
+OK
+
+
+SUMMARY OF COVERED REQUIREMENTS:
+ [PASS] Test 1: Malayalam Unicode tokenization (NFC, chillu, matras, 1-based indexing).
+ [PASS] Test 2: Correct positional indexing of repeated terms within document.
+ [PASS] Test 3: Correct Collection Frequency (CF) & Document Frequency (DF).
+ [PASS] Test 4: Correct retrieval of positional postings from disk (secondary storage).
+ [PASS] Test 5: Correct phrase searching using positional intersection algorithm.
+======================================================================
